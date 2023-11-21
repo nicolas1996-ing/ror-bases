@@ -1,0 +1,18 @@
+<h1>
+    Product detail works
+<h1>
+<hr>
+<h2 class="title_product"> 
+    <%= @product.title.capitalize %>
+</h2>
+<span class="description_product">
+    <%= @product.description %>
+</span>
+-
+<span class="price_product">
+    $ <%= @product.price %>
+</span>
+
+<p>
+    <%= link_to products_path do %> <- Regresar_al_listado <%end%>
+</p>
