@@ -30,4 +30,81 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    models:
+      product: "Product"
+    attributes:
+      product:
+        title: "Title"
+        description: "Description"
+        price: "Price"
+        photo: "Photo"
+    errors:
+      models:
+        product:
+          attributes:
+            title:
+              blank: "Title can't be blank"
+            description:
+              blank: "Description can't be blank"
+            price:
+              blank: "Price can't be blank"
+              not_a_number: "Price must be a number"
+            photo:
+              blank: "Photo can't be blank"
+
   hello: "Hello world"
+  view_generic: "generic view"
+  common: 
+    save: "Save"
+    cancel: "Cancel"
+    edit: "Edit"
+    delete: "Delete"
+    new: "New"
+    back: "Back"
+    show: "Show"
+    actions: "Actions"
+    confirm: "Confirm"
+    search: "Search"
+    no_results: "No results found"
+    yes: "Yes"
+    no: "No"
+    
+  products: 
+    edit:
+      title: "edit product i18n"
+    new: 
+      title: "new product i18n"
+    index: 
+      product_title: "Products"
+    create: 
+      success: "Product created succesfully"
+      error: "Product not created"
+    destroy:
+      success: "Product deleted succesfully"
+      error: "Product not deleted"
+    update:
+      success: "Product updated succesfully"
+      error: "Product not updated"
+
+  categories:
+    category:
+      delete: "Delete Category"
+      edit: "Edit Category"
+    index:
+      title: "Categories"
+      new: "New Category"
+
+    new:
+      title: "New Category"
+    edit:
+      title: "Edit Category"
+    create:
+      success: "Category created succesfully"
+      error: "Category not created"
+    destroy:
+      success: "Category deleted succesfully"
+      error: "Category not deleted"
+    update:
+      success: "Category updated succesfully"
+      error: "Category not updated"

@@ -18,5 +18,10 @@ module VendeloApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    # available_locales: son los idiomas que vamos a tener disponibles en nuestra aplicación.
+    config.i18n.available_locales = [:es, :en]
+    # default_locale: es el idioma por defecto que tendrá nuestra aplicación.
+    config.i18n.default_locale = :es
   end
 end

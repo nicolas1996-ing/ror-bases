@@ -10,6 +10,12 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
+    # rails active_storage:install
+    # rails db:migrate
+    # tabla creada: active_storage_blobs
+    has_one_attached :photo
+
+    # validaciones del modelo
     validates :title, presence: true
     validates :description, presence: true
     validates :price, presence: true

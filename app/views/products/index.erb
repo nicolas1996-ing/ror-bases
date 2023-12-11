@@ -1,20 +1,10 @@
-<h1>products works!</h1>
+<h1> <%= t(".product_title")%> </h1>
 <p>
   <%= Date.current %>
 </p>
 
 <br>
 <hr>
-<% @products.each do |product|%>
-    <h2> <%= product.title %> </h2>
-    <h3> <%= product.description %> </h3>
-    <span> <%= product.price %> <span>
-    <%# enlaces %>
-    <p>
-      <%= link_to product_path(product.id), class:"product" do %> ver_mas_forma_1... <% end %>
-    </p>
-    <p>
-      ver_mas_forma_2
-    <p>
-    <hr>
-<% end %>
+
+<%# itera sobre el arr de productos y los renderiza %>
+<%= render partial: "product", collection: @products%>

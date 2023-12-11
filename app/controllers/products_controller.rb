@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     # get "/products", to: "products#index"
     def index 
         # variable de instancia lista para usar en la vista
-        @products = Product.all
+        @products = Product.all.with_attached_photo
         puts params # {"controller"=>"products", "action"=>"index"}
     end 
 
@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
         puts params # {"controller"=>"products", "action"=>"show", "id"=>"1"}
     end
 
+    # new trabaja con create
     # get "/products/new", to: "products#new"
     def new 
         # crear un producto con todos los atributos vacios (nil)
@@ -24,19 +25,49 @@ class ProductsController < ApplicationController
     # post "/products", to: "products#create"
     def create
         @product = Product.new(product_params)
-
         if @product.save
-            redirect_to products_path, notice: 'El producto fue publicado con éxito.'
+            # flash: mensaje que se muestra una sola vez y que estara disponible en la siguiente vista (products#index)
+            redirect_to products_path, notice: t(".success")
         else
-            render :new, status: :unprocessable_entity
+            # renderiza el formulario con los errores, status 422
+            render :new, status: :unprocessable_entity, alert: t(".error")
         end
     end
 
+    # edit trabaja con update 
+    def edit
+        # params: {"controller"=>"products", "action"=>"edit", "id"=>"1"}
+        @product = product
+    end
+
+    def update
+        puts "params: #{params}" # {"controller"=>"products", "action"=>"update", "id"=>"1", "product"=>{"title"=>"Producto 1", "description"=>"Descripción del producto 1", "price"=>"100"}, "commit"=>"Actualizar Producto", "controller"=>"products"}
+        puts "params.product put request: #{params[:product]}" # {"title"=>"Producto 1", "description"=>"Descripción del producto 1", "price"=>"100"}
+        @product = product
+        if @product.update(product_params)
+            redirect_to product_path(@product), notice: t(".success")
+        else
+            render :edit, status: :unprocessable_entity, alert: t(".error")
+        end
+    end
+
+    def destroy
+        @product = product
+        if @product.destroy
+            redirect_to products_path, notice: t(".success"), status: :see_other
+        else
+            redirect_to products_path, alert: t(".error"), status: :unprocessable_entity
+        end
+    end
 
     private 
-    # captura de los params solo los valores especificados, lo demás es ignorado
+    # captura de los params solo los valores especificados (especificados), lo demás es ignorado
     def product_params
-        params.require(:product).permit(:title, :description, :price,)
+        params.require(:product).permit(:title, :description, :price, :photo)
+    end
+
+    def product 
+        @product ||= Product.find(params[:id])
     end
 end
 

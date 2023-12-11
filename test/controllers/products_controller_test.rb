@@ -35,14 +35,51 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "allow create a new product" do 
-        # post "/products", to: "products#create" # products_path
-        post products_path, params:{
+        # post "/products", to: "products#create" # products_path    
+        post products_path, params: { product: {
             title: "new product test",
             description: "new product description",
             price: 100
-        }
-        
-        # get "/products", to: "products#index"
+        }}
         assert_redirected_to products_path
+        assert_equal flash[:notice], "Producto creado exitosamente"
+    end
+
+    test "does not allow create a new product with null or empty fields" do
+         post products_path, params: { product: {
+            title: "",
+            description: "this is a description",
+            price: 10
+         }}
+
+         assert_response :unprocessable_entity
+    end
+
+    # edit 
+    test "render edit product page" do  
+        get edit_product_path(products(:one))
+        assert_response :success
+        assert_select "form"
+    end
+
+    test "allow update a product" do
+        patch product_path(products(:one)), params: { product: {price: 200} }
+        assert_redirected_to product_path(products(:one))
+        assert_equal flash[:notice], "Producto actualizado exitosamente"
+    end
+
+    test "does no allow update product" do 
+        patch product_path(products(:one)), params: { product: {title: ""} }
+        assert_response :unprocessable_entity
+    end
+  
+    test "can delete a product" do
+
+        # un producto menos en la bd despues de ejecutar el bloque
+        assert_difference("Product.count", -1) do   
+            delete product_path(products(:one))
+        end
+        assert_redirected_to products_path
+        assert_equal flash[:notice], "Producto eliminado exitosamente"
     end
 end

@@ -1,0 +1,17 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <% @product.errors.full_messages.each do |error|  %>
+      <%= error%>
+      <br>
+    <%end%>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit t('common.save') %>
+  </div>
+<% end %>

@@ -22,6 +22,16 @@
     <%= form.label :price%>
     <%= form.number_field :price%>
   </div>
+
+  <%# 
+    para subir imagenes a la base de datos
+    has_one_attached :photo
+    active_storage
+  %>
+   <div>
+      <%= form.label :photo %>
+      <%= form.file_field :photo%>
+    </div>
   <br>
   <%# btn submit %>
   <%= form.submit%>

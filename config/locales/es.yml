@@ -1,0 +1,77 @@
+es:
+  activerecord:
+    models:
+      product: "Producto"
+    attributes:
+      product:
+        title: "Nombre"
+        description: "Descripción"
+        price: "Precio"
+        photo: "Foto"
+    errors:
+      models:
+        product:
+          attributes:
+            title:
+              blank: "El nombre no puede estar vacío"
+            description:
+              blank: "La descripción no puede estar vacía"
+            price:
+              blank: "El precio no puede estar vacío"
+              not_a_number: "El precio debe ser un número"
+            photo:
+              blank: "La foto no puede estar vacía"
+  view_generic: "vista generica"
+  common: 
+    save: "Guardar"
+    cancel: "Cancelar"
+    edit: "Editar"
+    delete: "Eliminar"
+    new: "Nuevo"
+    back: "Volver"
+    show: "Mostrar"
+    actions: "Acciones"
+    confirm: "Confirmar"
+    search: "Buscar"
+    no_results: "No se encontraron resultados"
+    yes: "Si"
+    no: "No"
+    
+  products: 
+    edit:
+      title: "editar producto i18n"
+    new:
+      title: "nuevo producto i18n"
+    index:
+      product_title: "Productos"
+    create:
+      success: "Producto creado exitosamente"
+      error: "Producto no creado"
+    destroy: 
+      success: "Producto eliminado exitosamente"
+      error: "Producto no eliminado"
+    update: 
+      success: "Producto actualizado exitosamente"
+      error: "Producto no actualizado"
+
+  categories: 
+    # partial de categorias
+    category: 
+      delete: "Eliminar esta categoria"
+      edit: "Editar esta categoria"
+    index:
+      title: "Categorías"
+      new: "Nueva categoria"
+    new:
+      title: "Nueva Categoría"
+    edit:
+      title: "Editar Categoría"
+    create:
+      success: "Categoría creada exitosamente"
+      error: "Categoría no creada"
+    destroy:
+      success: "Categoría eliminada exitosamente"
+      error: "Categoría no eliminada"
+    update:
+      success: "Categoría actualizada exitosamente"
+      error: "Categoría no actualizada"

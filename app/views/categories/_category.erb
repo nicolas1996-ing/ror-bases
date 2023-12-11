@@ -1,0 +1,12 @@
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= category.name %>
+  </p>
+  <%= link_to t('.edit'), edit_category_path(category) %>
+  <%= form_for category, method: :delete do |f| %>
+    <%= f.submit t('.delete') %>
+  <% end %>
+
+</div>
+<br/>
