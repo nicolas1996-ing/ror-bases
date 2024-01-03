@@ -14,6 +14,10 @@
 <span class="price_product">
     $ <%= @product.price %>
 </span>
+-
+<span class="price_product">
+    <%= @product.category.name %>
+</span>
 
 <p>
     <%= link_to "editar producto", edit_product_path(@product)%>

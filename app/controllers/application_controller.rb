@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    include Pagy::Backend
+    
     # detectar idioma del navegador
     around_action :switch_locale
 

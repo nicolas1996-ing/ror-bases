@@ -3,9 +3,15 @@ class ProductsController < ApplicationController
 
     # get "/products", to: "products#index"
     def index 
+        # query_params (...url?query_param&query_param) 
+        # http://localhost:3000/?category_id=10 ... params ={"category_id"=>"10", "controller"=>"products", "action"=>"index"}
+
         # variable de instancia lista para usar en la vista
-        @products = Product.all.with_attached_photo
-        puts params # {"controller"=>"products", "action"=>"index"}
+        @categories = Category.all.order(name: :asc).load_async
+        # filtros: app/queries/find_products.rb
+        @products = FindProducts.new.call(params).load_async
+        # paginación - scroll infinito
+        @pagy, @products = pagy(@products, items: 10)
     end 
 
     # get "/products/:id", to: "products#show"
@@ -63,7 +69,7 @@ class ProductsController < ApplicationController
     private 
     # captura de los params solo los valores especificados (especificados), lo demás es ignorado
     def product_params
-        params.require(:product).permit(:title, :description, :price, :photo)
+        params.require(:product).permit(:title, :description, :price, :photo, :category_id, :search, :order_by)
     end
 
     def product 

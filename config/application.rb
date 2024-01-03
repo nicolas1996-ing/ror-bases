@@ -23,5 +23,8 @@ module VendeloApp
     config.i18n.available_locales = [:es, :en]
     # default_locale: es el idioma por defecto que tendrá nuestra aplicación.
     config.i18n.default_locale = :es
+
+    # permite ejecutar querys de forma asincrona
+    config.active_record_async_query_executor = :global_thread_pool
   end
 end

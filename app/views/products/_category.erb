@@ -1,0 +1,6 @@
+<%# filtros por categoria - queryparam category_id %>
+<%# cada vez que se hace un click se recarga toda la página %>
+<%= link_to products_path(category_id: category.id), class: "category" do %>
+    <br/>
+    <%= category.name %>
+<% end %>   

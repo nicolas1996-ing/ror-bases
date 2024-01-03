@@ -1,17 +1,20 @@
-<% if product.photo.attached?  %>
-    <%= image_tag product.photo, width: "200px" %>
-<% end %>
-<h2> <%= product.title %> </h2>
-<h3> <%= product.description %> </h3>
-<span> <%= product.price %> <span>
-<%# enlaces %>
-<p>
-    <%= link_to product_path(product.id), class:"product" do %> ver mas detalles f1... <% end %>
-</p>
-<p>
-    <%= link_to "ver mas detalles f1", product_path(product.id) %> 
-<p>
-<p>
-    <%= link_to "editar producto", edit_product_path(product)%>
-</p>
-<hr>
+<div class="product_detail">
+    <% if product.photo.attached?  %>
+        <%= image_tag product.photo, width: "200px" %>
+    <% end %>
+    <h2> <%= product.title %> </h2>
+    <h3> <%= product.description %> </h3>
+    <span> <%= product.price %> <span>
+    <span> <%= product.category.name %> <span>
+    <%# enlaces %>
+    <p>
+        <%= link_to product_path(product.id), class:"product", "data-turbo-frame": "_top" do %> ver mas detalles f1... <% end %>
+    </p>
+    <p>
+        <%= link_to "ver mas detalles f1", product_path(product.id), "data-turbo-frame": "_top" %> 
+    <p>
+    <p>
+        <%= link_to "editar producto", edit_product_path(product), "data-turbo-frame": "_top"%>
+    </p>
+    <hr>
+</div>

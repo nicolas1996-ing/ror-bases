@@ -36,6 +36,7 @@ es:
     no_results: "No se encontraron resultados"
     yes: "Si"
     no: "No"
+    filter: "Filtrar"
     
   products: 
     edit:
@@ -44,6 +45,13 @@ es:
       title: "nuevo producto i18n"
     index:
       product_title: "Productos"
+      all_products: "Todos los productos"
+      min_price: "Precio mínimo"
+      max_price: "Precio máximo"
+      newest: "Más nuevos"
+      oldest: "Más viejos"
+      expensive: "Más caros"
+      cheapest: "Más baratos"
     create:
       success: "Producto creado exitosamente"
       error: "Producto no creado"

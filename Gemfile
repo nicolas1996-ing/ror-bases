@@ -71,3 +71,7 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem 'pg_search'
+# pagination
+gem "pagy", "~> 6.2"

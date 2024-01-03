@@ -1,10 +1,44 @@
-<h1> <%= t(".product_title")%> </h1>
-<p>
-  <%= Date.current %>
-</p>
+<%= turbo_frame_tag 'categories' do %>
+  <h1> <%= t(".product_title")%> </h1>
+  <p>
+    <%= Date.current %>
+  </p>
 
-<br>
-<hr>
+  <br>
+  <hr>
 
-<%# itera sobre el arr de productos y los renderiza %>
-<%= render partial: "product", collection: @products%>
+  <h4>Filtros: </h4>
+  <%# formulario - filtros %>
+  <%= form_with url: products_path, method: :get do |form| %>
+    <%= form.label :search, "search: " %>
+    <%= form.text_field :search, placeholder: "buscador", value: params[:search]%>
+
+    <%= form.label :min_price, "Desde: " %>
+    <%= form.number_field :min_price, placeholder: t(".min_price"), value: params[:min_price] %>
+    <%# onChange: "this.form.requestSubmit()" .. javascript %>
+    <%# cada que ingreso un valor en un input del form y presiono enter se dispara el submit del form %>
+    <%= form.label :max_price, "Hasta: " %>
+    <%= form.number_field :max_price, placeholder: t(".max_price"), value: params[:max_price] %>
+
+    <%# select %>
+    <%# <%= form.select :order_by, options_for_select([["recientes","newest"],["costosos", "expensive"], ["baratos","cheapest"]], selected: params[:order_by])%> 
+    <%= form.select :order_by, options_for_select(Product::ORDER_BY.keys.map {|val| [t(".#{val}"),val]}, selected: params[:order_by])%>
+
+  
+    <%= form.submit t("common.filter") %>
+  <% end %>
+
+  <br/>
+  <%= link_to t(".all_products"), products_path, class: "category" %>
+  <%= render partial: "category", collection: @categories %>
+  <br/>
+
+  <h4>Listado de productos: </h4>
+  <%# itera sobre el arr de productos y los renderiza %>
+  <div class="products">
+    <%= turbo_frame_tag "products-#{@pagy.page}", class: "products" do %>
+      <%= render partial: "product", collection: @products%>
+      <%= turbo_frame_tag "products-#{@pagy.next}", class: "products", src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next %>
+    <% end %>
+  </div>
+<% end %>

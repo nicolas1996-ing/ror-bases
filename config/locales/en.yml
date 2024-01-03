@@ -69,6 +69,7 @@ en:
     no_results: "No results found"
     yes: "Yes"
     no: "No"
+    filter: "Filter"
     
   products: 
     edit:
@@ -77,6 +78,14 @@ en:
       title: "new product i18n"
     index: 
       product_title: "Products"
+      all_products: "All products"
+      min_price: "Min price"
+      max_price: "Max price"
+      newest: "Newest"
+      oldest: "Oldest"
+      expensive: "Expensive"
+      cheapest: "Cheapest"
+
     create: 
       success: "Product created succesfully"
       error: "Product not created"

@@ -23,6 +23,13 @@
     <%= form.number_field :price%>
   </div>
 
+ <div>
+    <%# input 3 %>
+    <%= form.label :category %>
+    <%#  param: category_id - :id valor enviado del modelo de category - :name valor del modelo que se le muestra al usuario%>
+    <%= form.collection_select :category_id, Category.all.order(name: :asc), :id, :name  %>
+  </div>
+
   <%# 
     para subir imagenes a la base de datos
     has_one_attached :photo
