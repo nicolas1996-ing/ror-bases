@@ -1,10 +1,28 @@
 <%# forma 1. links %>
+<br>
+<br>
+<% if Current.user.present? %>
+    <span> usuario actual:  </span> 
+    <%= Current.user.email %>
+<% end %>
+
+<%# <%= link_to "cerrar sesion" , session_path(Current.user.id), data: {
+    turbo_method: :delete,
+    turbo_confirm: "¿Estas seguro que quieres cerrar sesion?"
+} if Current.user.present? %> 
+
+<%= form_with  url: session_path(Current.user.id), method: :delete do |f| %>
+    <%= f.submit t('logout')%>
+<% end if Current.user.present? %>
+
 <%= link_to products_path do %>
-    <h1> vendelo_app </h1>
+    <h1> <%= t('app_name') %> </h1>
 <%end%>
 
 <%# forma 2. links %>
 <p>
-    <%= link_to "añadir nuevo producto", new_product_path  %>
-    <%= link_to "añadir nueva categoria", new_category_path  %>
+    <%= link_to "añadir nuevo producto", new_product_path  if Current.user.present? %> <br>
+    <%= link_to "añadir nueva categoria", new_category_path  if Current.user.present? %> <br>
+    <%= link_to "iniciar sesion con un usuario", new_session_path if Current.user.nil? %> <br>
+    <%= link_to "crear un nuevo usuario", new_user_path if Current.user.nil? %>
 </p>

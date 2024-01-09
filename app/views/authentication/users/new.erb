@@ -1,0 +1,17 @@
+<%= form_with model: @user do |form| %>
+    <% @user.errors.full_messages.each do |error| %>
+        <div> <%= error %> </div>
+        <br>
+    <% end %>
+        
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true %>
+    <br>
+    <%= form.label :username %>
+    <%= form.text_field :username, required: true %>
+    <br>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+    
+    <%= form.submit "Crear usuario" %>
+<% end %>

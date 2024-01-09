@@ -20,7 +20,7 @@
 </span>
 
 <p>
-    <%= link_to "editar producto", edit_product_path(@product)%>
+    <%= link_to "editar producto", edit_product_path(@product) if Current.user.present? && Current.user == @product.user %>
 </p>
 
 
@@ -36,7 +36,7 @@
 %>
 <%= form_for @product, method: :delete do |f| %>
     <%= f.submit "Eliminar este producto" %>
-<% end %>
+<% end if Current.user.present? && Current.user == @product.user %>
 
 <p>
     <%= link_to products_path do %> regresar al listado de productos <%end%>

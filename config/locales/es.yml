@@ -1,13 +1,25 @@
 es:
+  app_name: "VendeloApp"
+  meta_title: "Comprá y vendé productos de segunda mano"
+  logout: "cerrar sesión"
+
   activerecord:
     models:
       product: "Producto"
+      user: "Usuario"
+      category: "Categoría"
     attributes:
       product:
         title: "Nombre"
         description: "Descripción"
         price: "Precio"
         photo: "Foto"
+      user:
+        email: "Email"
+        username: "Nombre de usuario"
+        password: "Contraseña"
+      category:
+        name: "Nombre"
     errors:
       models:
         product:
@@ -37,7 +49,16 @@ es:
     yes: "Si"
     no: "No"
     filter: "Filtrar"
-    
+    not_logged_in: "No estás logueado, tienes que loguearte para poder realizar esta acción o registrarte si no tienes cuenta"
+
+  authentication:
+    users:
+      success: "Usuario creado exitosamente"
+    sessions:
+      login_success: "usuario logueado exitosamente"
+      login_failed: "error. usuario no logueado"
+      logout_success: "usuario deslogueado exitosamente"
+      logout: "desloguearse"
   products: 
     edit:
       title: "editar producto i18n"

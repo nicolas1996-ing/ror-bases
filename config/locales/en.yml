@@ -30,15 +30,26 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  app_name: "SellIt"
+  meta_title: "Buy and sell second hand products"
+  logout: "logout"
   activerecord:
     models:
       product: "Product"
+      user: "User"
+      category: "Category"
     attributes:
       product:
         title: "Title"
         description: "Description"
         price: "Price"
         photo: "Photo"
+      user: 
+        email: "Email"
+        username: "Username"
+        password: "Password"
+      category:
+        name: "Name"
     errors:
       models:
         product:
@@ -70,7 +81,16 @@ en:
     yes: "Yes"
     no: "No"
     filter: "Filter"
-    
+    not_logged_in: "You are not logged in, you have to log in to be able to perform this action or register if you do not have an account"
+
+  authentication:
+    users:
+      success: "User created succesfully"
+    sessions:
+      login_success: "Login success"
+      login_failed: "Login failed"
+      logout_success: "Logout success"
+      logout: "Logout"
   products: 
     edit:
       title: "edit product i18n"

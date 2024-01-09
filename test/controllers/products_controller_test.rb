@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
+
+    def setup 
+        # metodo definido en test/test_helper.rb
+       login
+    end
     # test 1.
     test "render a list of products" do
         # .../products

@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:create]
 
+    # saltar la validacion de usuario logueado definida en app/controllers/application_controller.rb
+    # y solo dejarla activa para los metodos index y show
+    skip_before_action :protect_pages, only: [:index, :show]
+
     # get "/products", to: "products#index"
     def index 
         # query_params (...url?query_param&query_param) 
@@ -9,7 +13,7 @@ class ProductsController < ApplicationController
         # variable de instancia lista para usar en la vista
         @categories = Category.all.order(name: :asc).load_async
         # filtros: app/queries/find_products.rb
-        @products = FindProducts.new.call(params).load_async
+        @products = FindProducts.new.call(product_params_index).load_async
         # paginación - scroll infinito
         @pagy, @products = pagy(@products, items: 10)
     end 
@@ -30,6 +34,11 @@ class ProductsController < ApplicationController
 
     # post "/products", to: "products#create"
     def create
+        # crea producto y lo asocia al usuario logueado. forma 1.
+        # Current.user: app/controllers/concerns/current.rb
+        # @product = Current.user.products.new(product_params)
+
+        # crea producto y lo asocia al usuario logueado. forma 2. ( revisar modelo product.rb)
         @product = Product.new(product_params)
         if @product.save
             # flash: mensaje que se muestra una sola vez y que estara disponible en la siguiente vista (products#index)
@@ -70,6 +79,11 @@ class ProductsController < ApplicationController
     # captura de los params solo los valores especificados (especificados), lo demás es ignorado
     def product_params
         params.require(:product).permit(:title, :description, :price, :photo, :category_id, :search, :order_by)
+    end
+
+    # strong params: solo los valores especificados (especificados), lo demás es ignorado
+    def product_params_index 
+        params.permit(:category_id, :min_price, :max_price, :search, :order_by, :page)
     end
 
     def product 

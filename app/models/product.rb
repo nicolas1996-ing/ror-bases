@@ -22,12 +22,15 @@ class Product < ApplicationRecord
     # tabla creada: active_storage_blobs
     has_one_attached :photo
     belongs_to :category
+    # belongs_to :user
+    belongs_to :user, default: -> { Current.user } # forma 2. para asociar el usuario actual a un producto que se quiere crear
 
     # validaciones del modelo
     validates :title, presence: true
     validates :description, presence: true
     validates :price, presence: true
 
+    # constantes del modelo 
     ORDER_BY = {
         newest: "created_at DESC",
         oldest: "created_at ASC",
