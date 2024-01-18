@@ -51,11 +51,19 @@ class ProductsController < ApplicationController
 
     # edit trabaja con update 
     def edit
+        # policies personalizadas - app/controllers/application_controller.rb
+        # todos los metodos de application_controller.rb son heredados y se ejecutan antes de los metodos de los controladores
+        authorize! product 
+ 
         # params: {"controller"=>"products", "action"=>"edit", "id"=>"1"}
         @product = product
     end
 
     def update
+        # solo los usuarios que crearon el producto pueden editarlo
+        # polices personalizadas - app/controllers/application_controller.rb
+        authorize! product 
+
         puts "params: #{params}" # {"controller"=>"products", "action"=>"update", "id"=>"1", "product"=>{"title"=>"Producto 1", "description"=>"Descripción del producto 1", "price"=>"100"}, "commit"=>"Actualizar Producto", "controller"=>"products"}
         puts "params.product put request: #{params[:product]}" # {"title"=>"Producto 1", "description"=>"Descripción del producto 1", "price"=>"100"}
         @product = product
@@ -67,6 +75,9 @@ class ProductsController < ApplicationController
     end
 
     def destroy
+        # solo los usuarios que crearon el producto pueden eliminarlo 
+        authorize! product 
+
         @product = product
         if @product.destroy
             redirect_to products_path, notice: t(".success"), status: :see_other

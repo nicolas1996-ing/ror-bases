@@ -50,6 +50,7 @@ es:
     no: "No"
     filter: "Filtrar"
     not_logged_in: "No estás logueado, tienes que loguearte para poder realizar esta acción o registrarte si no tienes cuenta"
+    not_authorized: "no tienes persmisos para realizar esta acción"
 
   authentication:
     users:

@@ -20,6 +20,7 @@ class Authentication::SessionsController < ApplicationController
     end  
 
     def destroy
+        # session is a rails method that stores the user_id in a cookie
         session.delete(:user_id)
         redirect_to products_path, notice: t('.logout_success')
     end

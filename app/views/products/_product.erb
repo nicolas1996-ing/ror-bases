@@ -4,8 +4,12 @@
     <% end %>
     <h2> <%= product.title %> </h2>
     <h3> <%= product.description %> </h3>
-    <span> <%= product.price %> <span>
-    <span> <%= product.category.name %> <span>
+    <span> Precio: <%= product.price %> <span> -
+    <span> Categoria: <%= product.category.name %> <span> - 
+    <% if Current.user.present? %>
+        <span> El usuario actual es el dueño de este producto? <%=  product.user.id == Current.user.id ? "si" : "no"  %> <span>
+    <% end %>
+
     <%# enlaces %>
     <p>
         <%= link_to product_path(product.id), class:"product", "data-turbo-frame": "_top" do %> ver mas detalles f1... <% end %>

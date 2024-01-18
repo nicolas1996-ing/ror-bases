@@ -82,6 +82,7 @@ en:
     no: "No"
     filter: "Filter"
     not_logged_in: "You are not logged in, you have to log in to be able to perform this action or register if you do not have an account"
+    not_authorized: "You are not allowed to perform this action"
 
   authentication:
     users:
