@@ -51,6 +51,7 @@ es:
     filter: "Filtrar"
     not_logged_in: "No estás logueado, tienes que loguearte para poder realizar esta acción o registrarte si no tienes cuenta"
     not_authorized: "no tienes persmisos para realizar esta acción"
+    user_not_found: "Usuario no encontrado!"
 
   authentication:
     users:
@@ -74,6 +75,8 @@ es:
       oldest: "Más viejos"
       expensive: "Más caros"
       cheapest: "Más baratos"
+    show:
+      view_more_products: "Ver mas productos de: %{email}"
     create:
       success: "Producto creado exitosamente"
       error: "Producto no creado"

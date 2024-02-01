@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   # delete "/product/:id", to: "products#destroy", as: :delete_product # delete_product_path
 
   resources :products 
+  resources :users, only: [:show], path: "/user" # http://localhost:3000/user/:id
+  resources :favorites, only: [:create]
 end

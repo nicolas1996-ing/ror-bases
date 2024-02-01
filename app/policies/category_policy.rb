@@ -18,6 +18,10 @@ class CategoryPolicy < BasePolicy
         Current.user.admin? 
     end
 
+    def edit 
+        Current.user.admin?
+    end
+
     def update
         Current.user.admin?
     end

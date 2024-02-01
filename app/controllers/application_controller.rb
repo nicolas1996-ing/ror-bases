@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
     include Authorization # concern authorization.rb
     include Pagy::Backend
     include Languages # concern languages.rb
+    include Error # concern error.rb
 end

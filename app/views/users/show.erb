@@ -1,0 +1,13 @@
+<% if @user.present? %>
+    <%= @user.email %>
+<% end %>
+
+<%# products %>
+<h4>Listado de productos asociados a este usuario: </h4>
+  <%# itera sobre el arr de productos y los renderiza %>
+<div class="products">
+    <%= turbo_frame_tag "products-#{@pagy.page}", class: "products" do %>
+        <%= render partial: "products/product", collection: @products%>
+        <%= turbo_frame_tag "products-#{@pagy.next}", class: "products", src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next %>
+    <% end %>
+</div>

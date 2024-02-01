@@ -83,7 +83,7 @@ en:
     filter: "Filter"
     not_logged_in: "You are not logged in, you have to log in to be able to perform this action or register if you do not have an account"
     not_authorized: "You are not allowed to perform this action"
-
+    user_not_found: "User not found!"
   authentication:
     users:
       success: "User created succesfully"
@@ -106,7 +106,8 @@ en:
       oldest: "Oldest"
       expensive: "Expensive"
       cheapest: "Cheapest"
-
+    show:
+      view_more_products: "View more products of: %{email}"
     create: 
       success: "Product created succesfully"
       error: "Product not created"

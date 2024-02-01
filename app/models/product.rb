@@ -22,6 +22,9 @@ class Product < ApplicationRecord
     # tabla creada: active_storage_blobs
     has_one_attached :photo
     belongs_to :category
+    has_many :favorites, dependent: :destroy # un producto le puede gustar a varias personas
+
+
     # belongs_to :user
     belongs_to :user, default: -> { Current.user } # forma 2. para asociar el usuario actual a un producto que se quiere crear
 

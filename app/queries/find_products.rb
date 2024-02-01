@@ -16,6 +16,7 @@ class FindProducts
         scoped = filter_by_min_price(scoped, params[:min_price])
         scoped = filter_by_max_price(scoped, params[:max_price])
         scoped = filter_by_query_text(scoped, params[:search])
+        scoped = filter_by_user_id(scoped, params[:user_id])
         sort(scoped, params[:order_by])
     end
 
@@ -43,6 +44,12 @@ class FindProducts
         return scoped if query_text.blank?
         scoped.where("title like ?", "%#{query_text}%")
     end
+
+    def filter_by_user_id(scoped, user_id)
+        return scoped unless user_id.present?
+        scoped.where(user_id: )
+    end
+
 
     def sort(scoped, order_by)
         scoped.order(Product::ORDER_BY.fetch(order_by&.to_sym, "created_at DESC"))

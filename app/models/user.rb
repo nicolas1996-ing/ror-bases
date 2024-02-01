@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
     # relaciones bd 
     has_many :products
+    has_many :favorites, dependent: :destroy # un usuario puede tener varios productos como favoritos
 
     private
     def downcase_attributes

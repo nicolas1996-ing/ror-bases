@@ -41,4 +41,9 @@
       <%= turbo_frame_tag "products-#{@pagy.next}", class: "products", src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next %>
     <% end %>
   </div>
+
+  <%# ver mas productos del usuario actual %>
+  <% if Current.user.present? %>
+    <%= link_to t(".view_more_products", email: Current.user.email),  user_path(User.last) %>
+  <% end %>
 <% end %>
