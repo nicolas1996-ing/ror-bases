@@ -31,5 +31,5 @@ Rails.application.routes.draw do
 
   resources :products 
   resources :users, only: [:show], path: "/user" # http://localhost:3000/user/:id
-  resources :favorites, only: [:create]
+  resources :favorites, only: [:create, :destroy]
 end

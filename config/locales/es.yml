@@ -86,7 +86,16 @@ es:
     update: 
       success: "Producto actualizado exitosamente"
       error: "Producto no actualizado"
-
+  favorites: 
+    index:
+      title: "Favoritos"
+      no_favorites: "No tienes favoritos"
+    create:
+      success: "Producto añadido a favoritos"
+      error: "Producto no añadido a favoritos"
+    destroy:
+      success: "Producto eliminado de favoritos"
+      error: "Producto no eliminado de favoritos"
   categories: 
     # partial de categorias
     category: 

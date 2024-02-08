@@ -57,3 +57,9 @@
     <% end %>
 <% end %>
 
+<% if @product.favorites.where(user_id: Current.user.id).present? %>
+    <%# aquí no hay necesidad de crear (product_id: @product.id) porque internamente la ruta espera el :id %>
+    <%= form_with url: favorite_path(@product.id), method: :delete do |f| %>
+        <%= f.submit "💔" %>
+    <% end %>
+<% end %>

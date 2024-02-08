@@ -12,6 +12,8 @@
 class Product < ApplicationRecord
     # gema: pg_search
     include PgSearch::Model
+    include Favoritable
+
     pg_search_scope :search_full_text, against: {
         title: 'A',
         description: 'B'

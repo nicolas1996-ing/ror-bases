@@ -117,7 +117,16 @@ en:
     update:
       success: "Product updated succesfully"
       error: "Product not updated"
-
+  favorites: 
+    index:
+      title: "Favorites"
+      no_favorites: "You don't have any favorites yet"
+    create:
+      success: "Product added to favorites"
+      error: "Product not added to favorites"
+    destroy:
+      success: "Product removed from favorites"
+      error: "Product not removed from favorites"
   categories:
     category:
       delete: "Delete Category"
